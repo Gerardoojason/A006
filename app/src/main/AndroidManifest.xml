@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.webkit.PermissionRequest" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.A006">
         <activity
-            android:name=".ServiceActivity"
+            android:name=".EditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Service.MainActivityService"
+            android:exported="false" />
+        <activity
+            android:name=".Service.ServiceActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"

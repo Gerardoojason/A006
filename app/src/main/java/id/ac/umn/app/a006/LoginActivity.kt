@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import id.ac.umn.app.a006.databinding.ActivityLoginBinding
 
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -51,6 +53,9 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
 
         if(firebaseAuth.currentUser != null){
+//            val name = intent.getStringExtra("Name")
+//            usernamewelcome.text = "Welcome : "+name
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

@@ -1,10 +1,11 @@
-package id.ac.umn.app.a006
+package id.ac.umn.app.a006.Service
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 
 import android.view.View
+import id.ac.umn.app.a006.Service.MyService
 import id.ac.umn.app.a006.databinding.ActivityServiceBinding
 
 

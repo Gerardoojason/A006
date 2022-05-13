@@ -1,4 +1,4 @@
-package id.ac.umn.app.a006
+package id.ac.umn.app.a006.Service
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,6 +10,8 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import id.ac.umn.app.a006.MainActivity
+import id.ac.umn.app.a006.R
 
 
 class MyService : Service() {

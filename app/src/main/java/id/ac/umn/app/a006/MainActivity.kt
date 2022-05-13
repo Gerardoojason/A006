@@ -4,9 +4,14 @@ package id.ac.umn.app.a006
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import id.ac.umn.app.a006.MoviesRepository.getPopularMovies
+import id.ac.umn.app.a006.MoviesRepository.getTopRatedMovies
+import id.ac.umn.app.a006.MoviesRepository.getUpcomingMovies
 import id.ac.umn.app.a006.databinding.ActivityMainBinding
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +21,10 @@ import kotlinx.android.synthetic.main.activity_profile.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var popularMovies: RecyclerView
+
+//    private var viewModel:MainViewModel by viewModels ()
+        private lateinit var viewModel:MainViewModel
+
     private lateinit var popularMoviesAdapter: MoviesAdapter
     private lateinit var popularMoviesLayoutMgr: LinearLayoutManager
 
@@ -33,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private var upcomingMoviesPage = 1
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -43,6 +55,20 @@ class MainActivity : AppCompatActivity() {
         val usernamewelcome = binding.usernamewelcome
         usernamewelcome.text = "Welcome : "+name
 
+//        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+//        viewModel.getPopularMovies()
+
+//
+//        val model:MainViewModel by viewModels()
+//        model.getPopularMovies()
+//        model.getTopRatedMovies()
+//        model.getUpcomingMovies()
+
+
+
+
+
+
 
 
 
@@ -50,31 +76,20 @@ class MainActivity : AppCompatActivity() {
 
 
         popularMovies = findViewById(R.id.popular_movies)
-        popularMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+        popularMoviesLayoutMgr = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         popularMovies.layoutManager = popularMoviesLayoutMgr
         popularMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         popularMovies.adapter = popularMoviesAdapter
 
         topRatedMovies = findViewById(R.id.top_rated_movies)
-        topRatedMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
+        topRatedMoviesLayoutMgr = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false
         )
         topRatedMovies.layoutManager = topRatedMoviesLayoutMgr
         topRatedMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         topRatedMovies.adapter = topRatedMoviesAdapter
 
         upcomingMovies = findViewById(R.id.upcoming_movies)
-        upcomingMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+        upcomingMoviesLayoutMgr = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         upcomingMovies.layoutManager = upcomingMoviesLayoutMgr
         upcomingMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         upcomingMovies.adapter = upcomingMoviesAdapter
@@ -82,12 +97,16 @@ class MainActivity : AppCompatActivity() {
         getPopularMovies()
         getTopRatedMovies()
         getUpcomingMovies()
+//       popmovie()
 
         binding.materialIconButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }
+//   private fun popmovie(){
+//        model.getPopularMovies()
+//    }
 
     private fun getPopularMovies() {
         MoviesRepository.getPopularMovies(
@@ -112,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                 if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
                     popularMovies.removeOnScrollListener(this)
                     popularMoviesPage++
-                    getPopularMovies()
+                    viewModel.getPopularMovies()
                 }
             }
         })
@@ -187,7 +206,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun onError() {
+   fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
     }
 

@@ -12,7 +12,25 @@ plugins {
 
 }
 
+
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\Gerardo Jason\\AndroidStudioProjects\\keystore123.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
+
+    signingConfigs {
+        verse {
+            storeFile file('C:\\Users\\Gerardo Jason\\AndroidStudioProjects\\keystore09.jks')
+            storePassword 'password'
+            keyAlias 'key0'
+            keyPassword 'password'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -27,8 +45,37 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfig.debug
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
+            signingConfig signingConfigs.debug
+        }
+
+        verse {
+//            signingConfig signingConfig.debug
+            debuggable true
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    flavorDimensions "version"
+    productFlavors{
+        demo{
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full{
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
         }
     }
     compileOptions {
@@ -107,6 +154,19 @@ dependencies {
     // https://github.com/square/retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    //Chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    // OkHttp BOM
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+
+    // OkHttp artifacts
+    implementation 'com.squareup.okhttp3:okhttp'
+    implementation 'com.squareup.okhttp3:logging-interceptor'
+
 
     // Gson
     // https://github.com/google/gson

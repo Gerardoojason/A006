@@ -15,3 +15,14 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//android {
+//    signingConfigs {
+//        release {
+//            storeFile file('C:\\Users\\Gerardo Jason\\AndroidStudioProjects\\keystore123.jks')
+//            storePassword '123456'
+//            keyAlias 'key0'
+//            keyPassword '123456'
+//        }
+//    }
+//}

@@ -8,10 +8,14 @@
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/calendar.xml" value="0.201" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/email.xml" value="0.201" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/ic_astonished.xml" value="0.201" />
+        <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.121" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/ic_camera.xml" value="0.201" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/lock.xml" value="0.201" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/drawable/person.xml" value="0.201" />
+        <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_change_profile.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_edit.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_edit_profile.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_edit_profile2.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Gerardo Jason/AndroidStudioProjects/A006/app/src/main/res/layout/activity_main_service.xml" value="0.22826086956521738" />

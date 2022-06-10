@@ -23,8 +23,20 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="48dp"
                 android:layout_height="46dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginEnd="4dp"
                 app:icon="@drawable/ic_person"
+                app:iconTint="#1B4A2E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/material_icon_buttonLogout"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="4dp"
+                app:icon="@drawable/ic_baseline_logout_24"
                 app:iconTint="#1B4A2E"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

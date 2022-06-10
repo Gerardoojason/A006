@@ -2,7 +2,11 @@ buildscript {
     dependencies {
         classpath 'com.google.gms:google-services:4.3.10'
         classpath'com.google.dagger:hilt-android-gradle-plugin:2.42'
+
+        classpath "com.android.tools.build:gradle:7.0.0"
     }
+
+\
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 plugins {
@@ -15,14 +19,3 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-//android {
-//    signingConfigs {
-//        release {
-//            storeFile file('C:\\Users\\Gerardo Jason\\AndroidStudioProjects\\keystore123.jks')
-//            storePassword '123456'
-//            keyAlias 'key0'
-//            keyPassword '123456'
-//        }
-//    }
-//}

@@ -1,11 +1,6 @@
 package id.ac.umn.app.a006
 
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerCollector
-import com.chuckerteam.chucker.api.ChuckerInterceptor
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,31 +8,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MoviesRepository {
-    private val logging: HttpLoggingInterceptor
-        get() {
-            val httpLoggingInterceptor = HttpLoggingInterceptor()
-            return httpLoggingInterceptor.apply {
-                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            }
-        }
-
 
     private val api: Api
 
     init {
-
-
-                val client = OkHttpClient.Builder()
-                    .addInterceptor(logging)
-                    .addInterceptor(ChuckerInterceptor(this))
-
-                    .build()
-            val retrofit = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
-
-                  .client(client)
-                .build()
+            .build()
 
         api = retrofit.create(Api::class.java)
     }

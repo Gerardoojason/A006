@@ -1,0 +1,44 @@
+image: openjdk:8-jdk #Menentukan Docker Image
+
+variables:
+  ANDROID_COMPILE_SDK: "32" #set compile SDK version
+  ANDROID_BUILD_TOOLS: "30.0.2" #set build tool version
+  ANDROID_SDK_TOOLS:  "4333796" #set SDK tool build number kita dapat mencari tahunya di sini https://developer.android.com/studio/releases/sdk-tools
+
+before_script:
+  #Installing Packages
+  - apt-get --quiet update --yes
+  - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
+
+  #Installing Android SDK
+  - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
+  - unzip -d android-sdk-linux android-sdk.zip
+  - echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
+  - echo y | android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
+  - echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
+
+  #Setting environment variable
+  - export ANDROID_HOME=$PWD/android-sdk-linux
+  - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
+  - chmod +x ./gradlew #set executable permission
+
+  # nonaktifkan sementara untuk memeriksa kesalahan EPIPE dan gunakan 'yes' untuk menerima semua lisensi
+  - set +o pipefail
+  - yes | android-sdk-linux/tools/bin/sdkmanager --licenses # accept SDK licences
+  - set -o pipefail
+
+# - build_release_android
+stages:
+  - build_release_android
+
+build_release_android:
+  stage: build_release_android
+  script:
+    #    - mkdir /PlayJson #membuat direktori temp dengan nama PlayJson pada root Project
+    #    - "echo $PLAY_STORE_JSON > /PlayJson/play-store-key.json" # copy git variable value ke file play-store-key.json
+    - gradlew build # perintah untuk publish apps ke play store
+  only:
+    - master #set trigger untuk CICD jika push atau merge ke dalam branch master
+  artifacts:
+    paths:
+      - ./app/build/outputs/ # set artifact path yang menyimpan file APK kita

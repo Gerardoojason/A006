@@ -1,7 +1,7 @@
 image: openjdk:8-jdk #Menentukan Docker Image
 
 variables:
-  ANDROID_COMPILE_SDK: "32" #set compile SDK version
+  ANDROID_COMPILE_SDK: "31" #set compile SDK version
   ANDROID_BUILD_TOOLS: "30.0.2" #set build tool version
   ANDROID_SDK_TOOLS:  "4333796" #set SDK tool build number kita dapat mencari tahunya di sini https://developer.android.com/studio/releases/sdk-tools
 
@@ -36,9 +36,9 @@ build_release_android:
   script:
     #    - mkdir /PlayJson #membuat direktori temp dengan nama PlayJson pada root Project
     #    - "echo $PLAY_STORE_JSON > /PlayJson/play-store-key.json" # copy git variable value ke file play-store-key.json
-    - gradlew build # perintah untuk publish apps ke play store
+    - gradlew build
   only:
-    - branch4 #set trigger untuk CICD jika push atau merge ke dalam branch master
+    - branch5 #set trigger untuk CICD jika push atau merge ke dalam branch master
   artifacts:
     paths:
       - ./app/build/outputs/ # set artifact path yang menyimpan file APK kita

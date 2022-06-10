@@ -8,6 +8,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
     id 'dagger.hilt.android.plugin'
+    id 'com.github.triplet.play'
 }
 android {
     buildFeatures {
@@ -32,6 +33,7 @@ android {
         }
     }
     compileSdk 31
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "id.ac.umn.app.a006"

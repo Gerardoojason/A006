@@ -38,7 +38,7 @@ build_release_android:
     #    - "echo $PLAY_STORE_JSON > /PlayJson/play-store-key.json" # copy git variable value ke file play-store-key.json
     - gradlew build # perintah untuk publish apps ke play store
   only:
-    - master #set trigger untuk CICD jika push atau merge ke dalam branch master
+    - branch3 #set trigger untuk CICD jika push atau merge ke dalam branch master
   artifacts:
     paths:
       - ./app/build/outputs/ # set artifact path yang menyimpan file APK kita

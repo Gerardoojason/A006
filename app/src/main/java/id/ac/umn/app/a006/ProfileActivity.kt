@@ -72,11 +72,11 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //ANDROID BACKGROUND
-        binding.btnStart.setOnClickListener {
-            val intent = Intent(this, MainActivityService::class.java)
-            startActivity(intent)
-        }
+//        //ANDROID BACKGROUND
+//        binding.btnStart.setOnClickListener {
+//            val intent = Intent(this, MainActivityService::class.java)
+//            startActivity(intent)
+//        }
         ////////////////
 
         binding.ivProfile.setOnClickListener {
